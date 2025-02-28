@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Share2, User, Mail, MessageSquare, Send, Phone } from "lucide-react";
+import { Share2, User, Mail, Send, Phone } from "lucide-react";
 import Swal from "sweetalert2";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -9,7 +9,8 @@ const ContactPage: React.FC = () => {
     name: "",
     email: "",
     phone: "",
-    message: "",
+    productType: "", // Add productType field
+    contactReason: "", // Add contactReason field
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -23,7 +24,8 @@ const ContactPage: React.FC = () => {
     name: string;
     email: string;
     phone: string;
-    message: string;
+    productType: string; // Add productType field
+    contactReason: string; // Add contactReason field
   }
 
   const handleChange = (
@@ -75,7 +77,8 @@ const ContactPage: React.FC = () => {
         name: "",
         email: "",
         phone: "",
-        message: "",
+        productType: "", // Reset productType field
+        contactReason: "", // Reset contactReason field
       });
     } catch (error) {
       Swal.fire({
@@ -91,18 +94,18 @@ const ContactPage: React.FC = () => {
 
   return (
     <>
-      <div className="h-auto pb-[10%] text-white overflow-hidden px-[5%] sm:px-[5%] lg:px-[10%] sm-mt-0 bg-[#030014]">
+      <div className="h-auto pb-[10%] text-white overflow-hidden px-[5%] sm:px-[5%] lg:px-[10%] sm-mt-0 bg-[#00052c]">
         <div className="text-center lg:mt-[5%] mb-2 sm:px-0 px-[5%]">
           <h2
             data-aos="fade-down"
             data-aos-duration="1000"
-            className="inline-block text-3xl md:text-5xl font-bold text-center mx-auto text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]"
+            className="inline-block text-3xl md:text-5xl font-bold text-center mx-auto text-transparent bg-clip-text bg-gradient-to-r from-white to-[#00A7E1]"
           >
             <span
               style={{
-                color: "#6366f1",
+                color: "#ffffff",
                 backgroundImage:
-                  "linear-gradient(45deg, #6366f1 10%, #a855f7 93%)",
+                  "linear-gradient(45deg, #ffffff 10%, #00A7E1 93%)",
                 WebkitBackgroundClip: "text",
                 backgroundClip: "text",
                 WebkitTextFillColor: "transparent",
@@ -132,7 +135,7 @@ const ContactPage: React.FC = () => {
             >
               <div className="flex justify-between items-start mb-8">
                 <div>
-                  <h2 className="text-4xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]">
+                  <h2 className="text-4xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#00A7E1] to-white">
                     Liên Lạc
                   </h2>
                   <p className="text-gray-400">
@@ -209,23 +212,109 @@ const ContactPage: React.FC = () => {
                   data-aos-delay="400"
                   className="relative group"
                 >
-                  <MessageSquare className="absolute left-4 top-4 w-5 h-5 text-gray-400 group-focus-within:text-[#6366f1] transition-colors" />
-                  <textarea
-                    name="message"
-                    placeholder="Tin nhắn của bạn"
-                    value={formData.message}
-                    onChange={handleChange}
-                    disabled={isSubmitting}
-                    className="w-full resize-none p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-[#6366f1]/30 transition-all duration-300 hover:border-[#6366f1]/30 h-[9.9rem] disabled:opacity-50"
-                    required
-                  />
+                  <p className="text-gray-400 mb-2">Loại sản phẩm:</p>
+                  <div className="flex items-center space-x-4">
+                    <label className="flex items-center">
+                      <input
+                        type="radio"
+                        name="productType"
+                        value="Máy lọc không khí"
+                        checked={formData.productType === "Máy lọc không khí"}
+                        onChange={handleChange}
+                        disabled={isSubmitting}
+                        className="hidden"
+                        required
+                      />
+                      <div
+                        className={`p-4 border rounded-xl cursor-pointer ${
+                          formData.productType === "Máy lọc không khí"
+                            ? "border-[#00A7E1] bg-[#00A7E1]/10"
+                            : "border-gray-400"
+                        }`}
+                      >
+                        <span className="text-white">Máy lọc không khí</span>
+                      </div>
+                    </label>
+                    <label className="flex items-center">
+                      <input
+                        type="radio"
+                        name="productType"
+                        value="Máy lọc nước"
+                        checked={formData.productType === "Máy lọc nước"}
+                        onChange={handleChange}
+                        disabled={isSubmitting}
+                        className="hidden"
+                        required
+                      />
+                      <div
+                        className={`p-4 border rounded-xl cursor-pointer ${
+                          formData.productType === "Máy lọc nước"
+                            ? "border-[#00A7E1] bg-[#00A7E1]/10"
+                            : "border-gray-400"
+                        }`}
+                      >
+                        <span className="text-white">Máy lọc nước</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+                <div
+                  data-aos="fade-up"
+                  data-aos-delay="500"
+                  className="relative group"
+                >
+                  <p className="text-gray-400 mb-2">Lựa chọn của bạn:</p>
+                  <div className="flex items-center space-x-4">
+                    <label className="flex items-center">
+                      <input
+                        type="radio"
+                        name="contactReason"
+                        value="Thuê"
+                        checked={formData.contactReason === "Thuê"}
+                        onChange={handleChange}
+                        disabled={isSubmitting}
+                        className="hidden"
+                        required
+                      />
+                      <div
+                        className={`p-4 border rounded-xl cursor-pointer ${
+                          formData.contactReason === "Thuê"
+                            ? "border-[#00A7E1] bg-[#00A7E1]/10"
+                            : "border-gray-400"
+                        }`}
+                      >
+                        <span className="text-white">Thuê</span>
+                      </div>
+                    </label>
+                    <label className="flex items-center">
+                      <input
+                        type="radio"
+                        name="contactReason"
+                        value="Mua"
+                        checked={formData.contactReason === "Mua"}
+                        onChange={handleChange}
+                        disabled={isSubmitting}
+                        className="hidden"
+                        required
+                      />
+                      <div
+                        className={`p-4 border rounded-xl cursor-pointer ${
+                          formData.contactReason === "Mua"
+                            ? "border-[#00A7E1] bg-[#00A7E1]/10"
+                            : "border-gray-400"
+                        }`}
+                      >
+                        <span className="text-white">Mua</span>
+                      </div>
+                    </label>
+                  </div>
                 </div>
                 <button
                   data-aos="fade-up"
-                  data-aos-delay="500"
+                  data-aos-delay="600"
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-[#6366f1] to-[#a855f7] text-white py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#6366f1]/20 active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="w-full bg-gradient-to-r from-[#00A7E1]/60 to-[#00A7E1] text-white py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#00A7E1]/20 active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   <Send className="w-5 h-5" />
                   {isSubmitting ? "Đang gửi..." : "Gửi tin nhắn"}

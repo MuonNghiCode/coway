@@ -26,7 +26,7 @@ const TypewriterEffect: React.FC<TypewriterEffectProps> = ({ text }) => {
       } else {
         clearInterval(timer);
       }
-    }, 260);
+    }, 100);
 
     return () => clearInterval(timer);
   }, [text]);
@@ -41,8 +41,8 @@ const TypewriterEffect: React.FC<TypewriterEffectProps> = ({ text }) => {
 
 const BackgroundEffect = () => (
   <div className="absolute inset-0 overflow-hidden">
-    <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 blur-3xl animate-pulse" />
-    <div className="absolute inset-0 bg-gradient-to-tr from-indigo-600/10 via-transparent to-purple-600/10 blur-2xl animate-float" />
+    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-[#00A7E1]/20 blur-3xl animate-pulse" />
+    <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-[#00A7E1]/10 blur-2xl animate-float" />
   </div>
 );
 
@@ -108,7 +108,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onLoadingComplete }) => {
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          className="fixed inset-0 bg-[#030014]"
+          className="fixed inset-0 bg-[#00052c]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit="exit"
@@ -144,21 +144,21 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onLoadingComplete }) => {
                     <span
                       data-aos="fade-right"
                       data-aos-delay="200"
-                      className="inline-block px-2 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent"
+                      className="inline-block px-2 bg-gradient-to-r from-white via-blue-100 to-[#00A7E1]/70 bg-clip-text text-transparent"
                     >
                       Chào mừng
                     </span>{" "}
                     <span
                       data-aos="fade-right"
                       data-aos-delay="400"
-                      className="inline-block px-2 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent"
+                      className="inline-block px-2 bg-gradient-to-r from-white via-blue-100 to-[#00A7E1]/70 bg-clip-text text-transparent"
                     >
                       đến với
                     </span>{" "}
                     <span
                       data-aos="fade-right"
                       data-aos-delay="600"
-                      className="inline-block px-2 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent"
+                      className="inline-block px-2 bg-gradient-to-r from-white via-blue-100 to-[#00A7E1]/70 bg-clip-text text-transparent"
                     >
                       trang
                     </span>
@@ -167,14 +167,14 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onLoadingComplete }) => {
                     <span
                       data-aos="fade-up"
                       data-aos-delay="800"
-                      className="inline-block px-2 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent"
+                      className="inline-block px-2 bg-gradient-to-r from-[#00A7E1] to-white bg-clip-text text-transparent"
                     >
                       Web
                     </span>{" "}
                     <span
                       data-aos="fade-up"
                       data-aos-delay="1000"
-                      className="inline-block px-2 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent"
+                      className="inline-block px-2 bg-gradient-to-r from-[#00A7E1] to-white bg-clip-text text-transparent"
                     >
                       của tôi
                     </span>
@@ -195,10 +195,10 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onLoadingComplete }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-full blur-md group-hover:blur-lg transition-all duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-[#00A7E1]/20 rounded-full blur-md group-hover:blur-lg transition-all duration-300" />
                   <div className="relative flex items-center gap-2 text-lg sm:text-xl md:text-2xl">
-                    <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-600" />
-                    <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                    <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-[#00A7E1]" />
+                    <span className="bg-gradient-to-r from-white via-[#00A7E1] to-white bg-clip-text text-transparent">
                       <TypewriterEffect text="https://coway-sigma.vercel.app/" />
                     </span>
                   </div>

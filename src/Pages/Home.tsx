@@ -12,10 +12,10 @@ const StatusBadge = memo(() => (
     data-aos-delay="400"
   >
     <div className="relative group">
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-full blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
+      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#00A7E1] to-white rounded-full blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
       <div className="relative px-3 sm:px-4 py-2 rounded-full bg-black/40 backdrop-blur-xl border border-white/10">
-        <span className="bg-gradient-to-r from-[#6366f1] to-[#a855f7] text-transparent bg-clip-text sm:text-sm text-[0.7rem] font-medium flex items-center">
-          <Sparkles className="sm:w-4 sm:h-4 w-3 h-3 mr-2 text-blue-400" />
+        <span className="bg-gradient-to-r from-[#00A7E1] to-white text-transparent bg-clip-text sm:text-sm text-[0.7rem] font-medium flex items-center">
+          <Sparkles className="sm:w-4 sm:h-4 w-3 h-3 mr-2 text-[#00A7E1]" />
           Sẵn sàng khám phá nào
         </span>
       </div>
@@ -27,15 +27,15 @@ const MainTitle = memo(() => (
   <div className="space-y-2" data-aos="fade-up" data-aos-delay="600">
     <h1 className="text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
       <span className="relative inline-block">
-        <span className="absolute -inset-2 bg-gradient-to-r from-[#6366f1] to-[#a855f7] blur-2xl opacity-20"></span>
-        <span className="relative bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
+        <span className="absolute -inset-2 bg-gradient-to-r from-[#00A7E1] to-white blur-2xl opacity-20"></span>
+        <span className="relative bg-gradient-to-r from-white via-[#00A7E1] to-white bg-clip-text text-transparent">
           Xin chào
         </span>
       </span>
       <br />
       <span className="relative inline-block mt-2">
-        <span className="absolute -inset-2 bg-gradient-to-r from-[#6366f1] to-[#a855f7] blur-2xl opacity-20"></span>
-        <span className="relative bg-gradient-to-r from-[#6366f1] to-[#a855f7] bg-clip-text text-transparent">
+        <span className="absolute -inset-2 bg-gradient-to-r from-[#00A7E1] to-white blur-2xl opacity-20"></span>
+        <span className="relative bg-gradient-to-r from-[#00A7E1] to-white bg-clip-text text-transparent">
           Tôi là "Tên"
         </span>
       </span>
@@ -121,7 +121,7 @@ const Home: React.FC = () => {
 
   // Lottie configuration
   const lottieOptions = {
-    src: "https://lottie.host/59360961-363a-4ffe-8dc4-ff41c187c309/kQ4FBW5wOn.lottie", // Thay bằng URL của animation mới
+    src: "https://lottie.host/bbd979da-84dc-46da-9515-0a917377a96e/L6eZR2Dzy4.lottie", // Thay bằng URL của animation mới
     loop: true,
     autoplay: true,
     rendererSettings: {
@@ -137,7 +137,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#030014] overflow-hidden" id="Home">
+    <div className="min-h-screen bg-[#00052c] overflow-hidden" id="Home">
       <div
         className={`relative z-10 transition-all duration-1000 ${
           isLoaded ? "opacity-100" : "opacity-0"
@@ -164,7 +164,7 @@ const Home: React.FC = () => {
                   <span className="text-xl md:text-2xl bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent font-light">
                     {text}
                   </span>
-                  <span className="w-[3px] h-6 bg-gradient-to-t from-[#6366f1] to-[#a855f7] ml-1 animate-blink"></span>
+                  <span className="w-[3px] h-6 bg-gradient-to-t from-[#00A7E1] to-white ml-1 animate-blink"></span>
                 </div>
 
                 {/* Description */}

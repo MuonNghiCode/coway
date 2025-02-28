@@ -63,11 +63,11 @@ const ProductCarousel: React.FC = () => {
   return (
     <section
       id="Product"
-      className="min-h-screen flex flex-col items-center justify-center pb-[10%] text-white overflow-hidden px-[5%] sm:px-[5%] lg:px-[10%] sm-mt-0 bg-[#030014]"
+      className="min-h-screen flex flex-col items-center justify-center pb-[10%] text-white overflow-hidden px-[5%] sm:px-[5%] lg:px-[10%] sm-mt-0 bg-[#00052c]"
     >
       <h1 className="relative inline-block mt-2 text-4xl font-bold mb-8 md:text-2xl sm:text-xl">
-        <span className="absolute -inset-2 bg-gradient-to-r from-[#6366f1] to-[#a855f7] blur-2xl opacity-20"></span>
-        <span className="relative bg-gradient-to-r from-[#6366f1] to-[#a855f7] bg-clip-text text-transparent">
+        {/* <span className="absolute -inset-2 bg-gradient-to-r from-white to-[#00A7E1] blur-2xl opacity-20"></span> */}
+        <span className="relative bg-gradient-to-r from-white to-[#00A7E1] bg-clip-text text-transparent">
           Sản phẩm
         </span>
       </h1>
