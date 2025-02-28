@@ -36,19 +36,34 @@ const MainTitle = memo(() => (
       <span className="relative inline-block mt-2">
         <span className="absolute -inset-2 bg-gradient-to-r from-[#6366f1] to-[#a855f7] blur-2xl opacity-20"></span>
         <span className="relative bg-gradient-to-r from-[#6366f1] to-[#a855f7] bg-clip-text text-transparent">
-          Tôi là Phương
+          Tôi là "Tên"
         </span>
       </span>
     </h1>
   </div>
 ));
 
+// const SocialLink = memo(({ icon: Icon, link }) => (
+//   <a href={link} target="_blank" rel="noopener noreferrer">
+//     <button className="group relative p-3">
+//       <div className="absolute inset-0 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-300"></div>
+//       <div className="relative rounded-xl bg-black/50 backdrop-blur-xl p-2 flex items-center justify-center border border-white/10 group-hover:border-white/20 transition-all duration-300">
+//         <Icon className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
+//       </div>
+//     </button>
+//   </a>
+// ));
+
 // Constants
 const TYPING_SPEED = 100;
 const ERASING_SPEED = 50;
 const PAUSE_DURATION = 2000;
 const WORDS = ["Slogan", "Slogan"];
-
+// const SOCIAL_LINKS = [
+//   { icon: Github, link: "https://github.com/EkiZR" },
+//   { icon: Linkedin, link: "https://www.linkedin.com/in/ekizr/" },
+//   { icon: Instagram, link: "https://www.instagram.com/ekizr_/?hl=id" },
+// ];
 const Home: React.FC = () => {
   const [text, setText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
@@ -160,6 +175,17 @@ const Home: React.FC = () => {
                 >
                   Mô tả
                 </p>
+
+                {/* Social Links */}
+                {/* <div
+                  className="hidden sm:flex gap-4 justify-start"
+                  data-aos="fade-up"
+                  data-aos-delay="1600"
+                >
+                  {SOCIAL_LINKS.map((social, index) => (
+                    <SocialLink key={index} {...social} />
+                  ))}
+                </div> */}
               </div>
             </div>
 

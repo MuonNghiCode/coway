@@ -7,7 +7,7 @@ const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState("Home");
 
   const navItems = [
-    { href: "#home", label: "Trang chủ" },
+    { href: "#Home", label: "Trang chủ" },
     { href: "#Product", label: "Sản phẩm" },
     { href: "#About", label: "Về chúng tôi" },
     { href: "#Contact", label: "Liên hệ với chúng tôi" },
@@ -92,7 +92,7 @@ const Navbar: React.FC = () => {
                 onClick={(e) => scrollToSection(e, "#Home")}
                 className="text-xl font-bold bg-gradient-to-r from-[#a855f7] to-[#6366f1] bg-clip-text text-transparent"
               >
-                Phương
+                "Tên, Logo"
               </a>
             </div>
 
