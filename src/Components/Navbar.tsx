@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
   const navItems = [
     { href: "#Home", label: "Trang chủ" },
     { href: "#Product", label: "Sản phẩm" },
-    { href: "#About", label: "Về chúng tôi" },
+    { href: "#About", label: "Tiện ích" },
     { href: "#Contact", label: "Liên hệ với chúng tôi" },
   ];
 
@@ -92,7 +92,7 @@ const Navbar: React.FC = () => {
                 onClick={(e) => scrollToSection(e, "#Home")}
                 className="text-xl font-bold bg-gradient-to-r from-[#00A7E1] to-white bg-clip-text text-transparent"
               >
-                "Tên, Logo"
+                Vicky
               </a>
             </div>
 
@@ -163,7 +163,7 @@ const Navbar: React.FC = () => {
                   onClick={(e) => scrollToSection(e, item.href)}
                   className={`block px-4 py-3 text-lg font-medium transition-all duration-300 ease ${
                     activeSection === item.href.substring(1)
-                      ? "bg-gradient-to-r from-[#6366f1] to-[#a855f7] bg-clip-text text-transparent font-semibold"
+                      ? "bg-gradient-to-r from-white to-[#00A7E1] bg-clip-text text-transparent font-semibold"
                       : "text-[#e2d3fd] hover:text-white"
                   }`}
                   style={{

@@ -119,7 +119,7 @@ const ContactPage: React.FC = () => {
             data-aos-duration="1100"
             className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base mt-2"
           >
-            Có câu hỏi? Gửi tin nhắn cho tôi, tôi sẽ phản hồi sớm.
+            Điền thông tin để chúng mình hỗ trợ bạn nhanh nhất nhé!
           </p>
         </div>
 
@@ -139,8 +139,8 @@ const ContactPage: React.FC = () => {
                     Liên Lạc
                   </h2>
                   <p className="text-gray-400">
-                    Có điều gì muốn thảo luận? Gửi tin nhắn cho tôi và chúng ta
-                    sẽ nói chuyện.
+                    Khách hàng nếu có nhu cầu hãy điền thông tin để chúng mình
+                    hỗ trợ tư vấn nhanh nhất nhé!
                   </p>
                 </div>
                 <Share2 className="w-10 h-10 text-[#6366f1] opacity-50" />

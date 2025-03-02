@@ -6,3 +6,67 @@
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
 }
+
+/* Tùy chỉnh thanh cuộn */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Độ rộng của thanh cuộn */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f0f0f0; /* Màu nền thanh cuộn */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    white,
+    #00a7e1,
+    white
+  ); /* Gradient từ trắng -> xanh */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    to bottom,
+    #e0e0e0,
+    #0095c2,
+    #e0e0e0
+  ); /* Gradient sáng hơn khi hover */
+}
+
+/* 🌟 Tùy chỉnh thanh cuộn cho toàn bộ trang web 🌟 */
+html {
+  scroll-behavior: smooth; /* Cuộn mượt mà */
+}
+
+/* Thanh cuộn trên trình duyệt WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 10px; /* Độ rộng thanh cuộn */
+}
+
+::-webkit-scrollbar-track {
+  background: #00052c; /* Màu nền của thanh cuộn */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    #00052c,
+    #00a7e1,
+    #00052c
+  ); /* Gradient từ trắng → xanh */
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    to bottom,
+    #00052c,
+    #0095c2,
+    #00052c
+  ); /* Gradient sáng hơn khi hover */
+}

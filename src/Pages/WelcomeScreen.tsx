@@ -146,24 +146,24 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onLoadingComplete }) => {
                       data-aos-delay="200"
                       className="inline-block px-2 bg-gradient-to-r from-white via-blue-100 to-[#00A7E1]/70 bg-clip-text text-transparent"
                     >
-                      Chào mừng
+                      COWAY -
                     </span>{" "}
                     <span
                       data-aos="fade-right"
                       data-aos-delay="400"
                       className="inline-block px-2 bg-gradient-to-r from-white via-blue-100 to-[#00A7E1]/70 bg-clip-text text-transparent"
                     >
-                      đến với
-                    </span>{" "}
+                      Trao yêu thương,
+                    </span>
                     <span
                       data-aos="fade-right"
                       data-aos-delay="600"
                       className="inline-block px-2 bg-gradient-to-r from-white via-blue-100 to-[#00A7E1]/70 bg-clip-text text-transparent"
                     >
-                      trang
+                      gửi an lành!
                     </span>
                   </div>
-                  <div>
+                  {/* <div>
                     <span
                       data-aos="fade-up"
                       data-aos-delay="800"
@@ -178,7 +178,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onLoadingComplete }) => {
                     >
                       của tôi
                     </span>
-                  </div>
+                  </div> */}
                 </h1>
               </motion.div>
 

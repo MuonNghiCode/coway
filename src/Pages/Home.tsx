@@ -1,27 +1,28 @@
 import React, { useState, useEffect, useCallback, memo } from "react";
-import { Sparkles } from "lucide-react";
+// import { Sparkles } from "lucide-react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { ArrowDown } from "lucide-react";
 
 // Memoized Components
-const StatusBadge = memo(() => (
-  <div
-    className="inline-block animate-float  lg:mx-0"
-    data-aos="zoom-in"
-    data-aos-delay="400"
-  >
-    <div className="relative group">
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#00A7E1] to-white rounded-full blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
-      <div className="relative px-3 sm:px-4 py-2 rounded-full bg-black/40 backdrop-blur-xl border border-white/10">
-        <span className="bg-gradient-to-r from-[#00A7E1] to-white text-transparent bg-clip-text sm:text-sm text-[0.7rem] font-medium flex items-center">
-          <Sparkles className="sm:w-4 sm:h-4 w-3 h-3 mr-2 text-[#00A7E1]" />
-          Sẵn sàng khám phá nào
-        </span>
-      </div>
-    </div>
-  </div>
-));
+// const StatusBadge = memo(() => (
+//   <div
+//     className="inline-block animate-float  lg:mx-0"
+//     data-aos="zoom-in"
+//     data-aos-delay="400"
+//   >
+//     <div className="relative group">
+//       <div className="absolute -inset-0.5 bg-gradient-to-r from-[#00A7E1] to-white rounded-full blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
+//       <div className="relative px-3 sm:px-4 py-2 rounded-full bg-black/40 backdrop-blur-xl border border-white/10">
+//         <span className="bg-gradient-to-r from-[#00A7E1] to-white text-transparent bg-clip-text sm:text-sm text-[0.7rem] font-medium flex items-center">
+//           <Sparkles className="sm:w-4 sm:h-4 w-3 h-3 mr-2 text-[#00A7E1]" />
+//           Sẵn sàng khám phá nào
+//         </span>
+//       </div>
+//     </div>
+//   </div>
+// ));
 
 const MainTitle = memo(() => (
   <div className="space-y-2" data-aos="fade-up" data-aos-delay="600">
@@ -29,14 +30,14 @@ const MainTitle = memo(() => (
       <span className="relative inline-block">
         <span className="absolute -inset-2 bg-gradient-to-r from-[#00A7E1] to-white blur-2xl opacity-20"></span>
         <span className="relative bg-gradient-to-r from-white via-[#00A7E1] to-white bg-clip-text text-transparent">
-          Xin chào
+          Chúng mình
         </span>
       </span>
       <br />
       <span className="relative inline-block mt-2">
         <span className="absolute -inset-2 bg-gradient-to-r from-[#00A7E1] to-white blur-2xl opacity-20"></span>
         <span className="relative bg-gradient-to-r from-[#00A7E1] to-white bg-clip-text text-transparent">
-          Tôi là "Tên"
+          là Vicky
         </span>
       </span>
     </h1>
@@ -55,10 +56,13 @@ const MainTitle = memo(() => (
 // ));
 
 // Constants
-const TYPING_SPEED = 100;
-const ERASING_SPEED = 50;
-const PAUSE_DURATION = 2000;
-const WORDS = ["Slogan", "Slogan"];
+const TYPING_SPEED = 10;
+const ERASING_SPEED = 10;
+const PAUSE_DURATION = 1000;
+const WORDS = [
+  "Nhóm sinh viên trải nghiệm thực chiến ",
+  "Professional Selling event",
+];
 // const SOCIAL_LINKS = [
 //   { icon: Github, link: "https://github.com/EkiZR" },
 //   { icon: Linkedin, link: "https://www.linkedin.com/in/ekizr/" },
@@ -137,7 +141,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#00052c] overflow-hidden" id="Home">
+    <div className="min-h-screen bg-[#00052c] pt-6 overflow-hidden" id="Home">
       <div
         className={`relative z-10 transition-all duration-1000 ${
           isLoaded ? "opacity-100" : "opacity-0"
@@ -152,7 +156,7 @@ const Home: React.FC = () => {
               data-aos-delay="200"
             >
               <div className="space-y-4 sm:space-y-6">
-                <StatusBadge />
+                {/* <StatusBadge /> */}
                 <MainTitle />
 
                 {/* Typing Effect */}
@@ -161,7 +165,7 @@ const Home: React.FC = () => {
                   data-aos="fade-up"
                   data-aos-delay="800"
                 >
-                  <span className="text-xl md:text-2xl bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent font-light">
+                  <span className="text-xl md:text-2xl bg-gradient-to-r text-gray-400 max-w-xl leading-relaxed font-lightparent font-light animate-pulse">
                     {text}
                   </span>
                   <span className="w-[3px] h-6 bg-gradient-to-t from-[#00A7E1] to-white ml-1 animate-blink"></span>
@@ -169,11 +173,40 @@ const Home: React.FC = () => {
 
                 {/* Description */}
                 <p
-                  className="text-base md:text-lg text-gray-400 max-w-xl leading-relaxed font-light"
+                  className="text-base md:text-lg bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent max-w-xl leading-relaxed font-light"
                   data-aos="fade-up"
                   data-aos-delay="1000"
                 >
-                  Mô tả
+                  Với sự kiện lần này chúng mình đồng hành cùng thương hiệu
+                  COWAY - Máy lọc nước, máy lọc không khí số 1 Hàn Quốc
+                </p>
+                <p
+                  className="text-base md:text-lg bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent max-w-xl leading-relaxed font-light"
+                  data-aos="fade-up"
+                  data-aos-delay="1000"
+                >
+                  Mỗi người đều xứng đáng tận hưởng một không gian sống trong
+                  lành và tiện nghi! COWAY sử dụng công nghệ bộ lọc tiên tiến,
+                  cam kết với tiêu chí “Hơn cả một sản phẩm, đó là sự chăm sóc
+                  dành riêng cho bạn!"
+                </p>
+                <p
+                  className="text-base md:text-lg bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent max-w-xl leading-relaxed font-light"
+                  data-aos="fade-up"
+                  data-aos-delay="1000"
+                >
+                  Chỉ từ 360.000 đồng/tháng, bạn đã có thể sở hữu ngay một giải
+                  pháp chăm sóc sức khỏe toàn diện cho không gian sống.
+                </p>
+                <p
+                  className="text-base md:text-lg bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent max-w-xl leading-relaxed font-light"
+                  data-aos="fade-up"
+                  data-aos-delay="1000"
+                >
+                  Hãy cùng Vicky khám phá và nhận ngay những ưu đãi độc quyền
+                  <span className="inline-flex items-center ml-2 text-[#00A7E1] animate-bounce">
+                    <ArrowDown className="w-4 h-4" />
+                  </span>
                 </p>
 
                 {/* Social Links */}
