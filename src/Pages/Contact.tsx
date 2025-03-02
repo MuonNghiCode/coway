@@ -29,7 +29,7 @@ const ContactPage: React.FC = () => {
     });
   }, []);
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = () => {
     setIsSubmitting(true);
 
     Swal.fire({
@@ -113,7 +113,7 @@ const ContactPage: React.FC = () => {
 
               <form
                 id="contactForm"
-                action="https://formsubmit.co/minhquanpm1610@gmail.com"
+                action="https://formsubmit.co/ngocphuong070404@gmail.com"
                 method="POST"
                 onSubmit={handleSubmit(onSubmit)}
                 className="space-y-6"
