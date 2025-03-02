@@ -141,123 +141,59 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#00052c] pt-6 overflow-hidden" id="Home">
-      <div
-        className={`relative z-10 transition-all duration-1000 ${
+    <div
+      className={`min-h-screen bg-[#00052c] px-5 sm:px-10 pt-5 sm:pt-10 overflow-hidden 
+        transition-opacity duration-1000 ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
-      >
-        <div className="container mx-auto px-[5%] sm:px-6 lg:px-[0%] min-h-screen">
-          <div className="flex flex-col lg:flex-row items-center justify-center h-screen md:justify-between gap-0 sm:gap-12 lg:gap-20">
-            {/* Left Column */}
-            <div
-              className="w-full lg:w-1/2 space-y-6 sm:space-y-8 text-left lg:text-left order-1 lg:order-1 lg:mt-0"
-              data-aos="fade-right"
-              data-aos-delay="200"
-            >
-              <div className="space-y-4 sm:space-y-6">
-                {/* <StatusBadge /> */}
-                <MainTitle />
+      id="Home"
+    >
+      <div className="container mx-auto min-h-screen flex flex-col-reverse lg:flex-row items-center justify-between">
+        {/* ✅ Left Column - Nội dung */}
+        <div className="w-full lg:w-1/2 text-center lg:text-left space-y-6 order-2 lg:order-1 mt-10 sm:mt-16 md:mt-20 lg:mt-0">
+          <MainTitle />
 
-                {/* Typing Effect */}
-                <div
-                  className="h-8 flex items-center"
-                  data-aos="fade-up"
-                  data-aos-delay="800"
-                >
-                  <span className="text-xl md:text-2xl bg-gradient-to-r text-gray-400 max-w-xl leading-relaxed font-lightparent font-light animate-pulse">
-                    {text}
-                  </span>
-                  <span className="w-[3px] h-6 bg-gradient-to-t from-[#00A7E1] to-white ml-1 animate-blink"></span>
-                </div>
+          {/* 🖋️ Typing Effect */}
+          <div className="h-8 flex justify-center lg:justify-start items-center">
+            <span className="text-lg sm:text-xl md:text-2xl text-gray-400 animate-pulse">
+              {text}
+            </span>
+            <span className="w-[3px] h-6 bg-gradient-to-t from-[#00A7E1] to-white ml-1 animate-blink"></span>
+          </div>
 
-                {/* Description */}
-                <p
-                  className="text-base md:text-lg bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent max-w-xl leading-relaxed font-light"
-                  data-aos="fade-up"
-                  data-aos-delay="1000"
-                >
-                  Với sự kiện lần này chúng mình đồng hành cùng thương hiệu
-                  COWAY - Máy lọc nước, máy lọc không khí số 1 Hàn Quốc
-                </p>
-                <p
-                  className="text-base md:text-lg bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent max-w-xl leading-relaxed font-light"
-                  data-aos="fade-up"
-                  data-aos-delay="1000"
-                >
-                  Mỗi người đều xứng đáng tận hưởng một không gian sống trong
-                  lành và tiện nghi! COWAY sử dụng công nghệ bộ lọc tiên tiến,
-                  cam kết với tiêu chí “Hơn cả một sản phẩm, đó là sự chăm sóc
-                  dành riêng cho bạn!"
-                </p>
-                <p
-                  className="text-base md:text-lg bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent max-w-xl leading-relaxed font-light"
-                  data-aos="fade-up"
-                  data-aos-delay="1000"
-                >
-                  Chỉ từ 360.000 đồng/tháng, bạn đã có thể sở hữu ngay một giải
-                  pháp chăm sóc sức khỏe toàn diện cho không gian sống.
-                </p>
-                <p
-                  className="text-base md:text-lg bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent max-w-xl leading-relaxed font-light"
-                  data-aos="fade-up"
-                  data-aos-delay="1000"
-                >
-                  Hãy cùng Vicky khám phá và nhận ngay những ưu đãi độc quyền
-                  <span className="inline-flex items-center ml-2 text-[#00A7E1] animate-bounce">
-                    <ArrowDown className="w-4 h-4" />
-                  </span>
-                </p>
+          {/* 📌 Description */}
+          <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed">
+            Với sự kiện lần này chúng mình đồng hành cùng thương hiệu COWAY -
+            Máy lọc nước, máy lọc không khí số 1 Hàn Quốc
+          </p>
+          <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed">
+            Mỗi người đều xứng đáng tận hưởng một không gian sống trong lành và
+            tiện nghi! COWAY sử dụng công nghệ bộ lọc tiên tiến...
+          </p>
+          <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed">
+            Chỉ từ{" "}
+            <span className="text-[#00A7E1] font-medium">
+              360.000 đồng/tháng
+            </span>
+            , bạn đã có thể sở hữu ngay một giải pháp chăm sóc sức khỏe toàn
+            diện.
+          </p>
+          <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed">
+            Hãy cùng Vicky khám phá và nhận ngay những ưu đãi độc quyền
+            <span className="inline-flex items-center ml-2 text-[#00A7E1] animate-bounce">
+              <ArrowDown className="w-4 h-4" />
+            </span>
+          </p>
+        </div>
 
-                {/* Social Links */}
-                {/* <div
-                  className="hidden sm:flex gap-4 justify-start"
-                  data-aos="fade-up"
-                  data-aos-delay="1600"
-                >
-                  {SOCIAL_LINKS.map((social, index) => (
-                    <SocialLink key={index} {...social} />
-                  ))}
-                </div> */}
-              </div>
-            </div>
-
-            {/* Right Column - Optimized Lottie Animation */}
-            <div
-              className="w-full py-[10%] sm:py-0 lg:w-1/2 h-auto lg:h-[600px] xl:h-[750px] relative flex items-center justify-center order-2 lg:order-2 mt-8 lg:mt-0"
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
-              data-aos="fade-left"
-              data-aos-delay="600"
-            >
-              <div className="relative w-full opacity-90">
-                <div
-                  className={`absolute inset-0 bg-gradient-to-r from-[#6366f1]/10 to-[#a855f7]/10 rounded-3xl blur-3xl transition-all duration-700 ease-in-out ${
-                    isHovering ? "opacity-50 scale-105" : "opacity-20 scale-100"
-                  }`}
-                ></div>
-
-                <div
-                  className={`relative z-10 w-full opacity-90 transform transition-transform duration-500 ${
-                    isHovering ? "scale-105" : "scale-100"
-                  }`}
-                >
-                  <DotLottieReact {...lottieOptions} />
-                </div>
-
-                <div
-                  className={`absolute inset-0 pointer-events-none transition-all duration-700 ${
-                    isHovering ? "opacity-50" : "opacity-20"
-                  }`}
-                >
-                  <div
-                    className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-br from-indigo-500/10 to-purple-500/10 blur-3xl animate-[pulse_6s_cubic-bezier(0.4,0,0.6,1)_infinite] transition-all duration-700 ${
-                      isHovering ? "scale-110" : "scale-100"
-                    }`}
-                  ></div>
-                </div>
-              </div>
-            </div>
+        {/* 🎬 Right Column - Lottie Animation */}
+        <div
+          className="w-full lg:w-1/2 flex justify-center items-center order-1 lg:order-2"
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
+        >
+          <div className="relative w-[250px] sm:w-[300px] md:w-[400px] lg:w-[600px] xl:w-[700px]">
+            <DotLottieReact {...lottieOptions} />
           </div>
         </div>
       </div>

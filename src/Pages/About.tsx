@@ -62,7 +62,7 @@ const AboutPage: React.FC = () => {
             data-aos="fade-right"
             data-aos-duration="1000"
           >
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold leading-relaxed">
+            <h2 className="text-xs sm:text-lg lg:text-sm xl:text-2xl font-semibold leading-relaxed">
               <div className="grid grid-cols-1 gap-3">
                 <span className="flex items-center gap-2 p-3 rounded-lg bg-[#ffffff18] hover:bg-[#ffffff30] transition-all duration-300">
                   🔹 Máy mới 100% – Nguyên seal, chuẩn Hàn Quốc 🇰🇷
