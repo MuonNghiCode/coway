@@ -29,7 +29,9 @@ const ContactPage: React.FC = () => {
     });
   }, []);
 
-  const onSubmit = () => {
+  const onSubmit = async (data: FormData, event?: React.BaseSyntheticEvent) => {
+    event?.preventDefault(); // Ngăn chặn hành động mặc định của form
+
     setIsSubmitting(true);
 
     Swal.fire({
@@ -41,6 +43,28 @@ const ContactPage: React.FC = () => {
       },
     });
 
+    // Log the form data to the console
+    console.log("Form data:", data);
+
+    // Kiểm tra giá trị của form trước khi submit
+    if (
+      !data.name ||
+      !data.email ||
+      !data.phone ||
+      !data.productType ||
+      !data.contactReason
+    ) {
+      Swal.fire({
+        title: "Lỗi!",
+        text: "Vui lòng điền đầy đủ thông tin trước khi gửi.",
+        icon: "error",
+        confirmButtonColor: "#6366f1",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Nếu dữ liệu hợp lệ, submit form
     const form = document.getElementById("contactForm") as HTMLFormElement;
     form.submit();
 
@@ -108,14 +132,14 @@ const ContactPage: React.FC = () => {
                     hỗ trợ tư vấn nhanh nhất nhé!
                   </p>
                 </div>
-                <Share2 className="w-10 h-10 text-[#6366f1] opacity-50" />
+                <Share2 className="w-10 h-10 text-[#00A7E1] opacity-50" />
               </div>
 
               <form
                 id="contactForm"
                 action="https://formsubmit.co/ngocphuong070404@gmail.com"
                 method="POST"
-                onSubmit={handleSubmit(onSubmit)}
+                onSubmit={handleSubmit((data, e) => onSubmit(data, e))}
                 className="space-y-6"
               >
                 {/* FormSubmit Configuration */}
@@ -127,7 +151,7 @@ const ContactPage: React.FC = () => {
                   data-aos-delay="100"
                   className="relative group"
                 >
-                  <User className="absolute left-4 top-4 w-5 h-5 text-gray-400 group-focus-within:text-[#6366f1] transition-colors" />
+                  <User className="absolute left-4 top-4 w-5 h-5 text-gray-400 group-focus-within:text-[#00A7E1] transition-colors" />
                   <input
                     type="text"
                     {...register("name", {
@@ -139,7 +163,7 @@ const ContactPage: React.FC = () => {
                     })}
                     placeholder="Tên của bạn"
                     disabled={isSubmitting}
-                    className="w-full p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-[#6366f1]/30 transition-all duration-300 hover:border-[#6366f1]/30 disabled:opacity-50"
+                    className="w-full p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-[#00A7E1]/30 transition-all duration-300 hover:border-[#6366f1]/30 disabled:opacity-50"
                   />
                   {errors.name && (
                     <p className="text-red-500">{errors.name.message}</p>
@@ -150,7 +174,7 @@ const ContactPage: React.FC = () => {
                   data-aos-delay="200"
                   className="relative group"
                 >
-                  <Mail className="absolute left-4 top-4 w-5 h-5 text-gray-400 group-focus-within:text-[#6366f1] transition-colors" />
+                  <Mail className="absolute left-4 top-4 w-5 h-5 text-gray-400 group-focus-within:text-[#00A7E1] transition-colors" />
                   <input
                     type="email"
                     {...register("email", {
@@ -163,7 +187,7 @@ const ContactPage: React.FC = () => {
                     })}
                     placeholder="Email của bạn"
                     disabled={isSubmitting}
-                    className="w-full p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-[#6366f1]/30 transition-all duration-300 hover:border-[#6366f1]/30 disabled:opacity-50"
+                    className="w-full p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-[#00A7E1]/30 transition-all duration-300 hover:border-[#6366f1]/30 disabled:opacity-50"
                   />
                   {errors.email && (
                     <p className="text-red-500">{errors.email.message}</p>
@@ -174,7 +198,7 @@ const ContactPage: React.FC = () => {
                   data-aos-delay="300"
                   className="relative group"
                 >
-                  <Phone className="absolute left-4 top-4 w-5 h-5 text-gray-400 group-focus-within:text-[#6366f1] transition-colors" />
+                  <Phone className="absolute left-4 top-4 w-5 h-5 text-gray-400 group-focus-within:text-[#00A7E1] transition-colors" />
                   <input
                     type="tel"
                     {...register("phone", {
@@ -186,7 +210,7 @@ const ContactPage: React.FC = () => {
                     })}
                     placeholder="Số điện thoại của bạn"
                     disabled={isSubmitting}
-                    className="w-full p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-[#6366f1]/30 transition-all duration-300 hover:border-[#6366f1]/30 disabled:opacity-50"
+                    className="w-full p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-[#00A7E1]/30 transition-all duration-300 hover:border-[#6366f1]/30 disabled:opacity-50"
                   />
                   {errors.phone && (
                     <p className="text-red-500">{errors.phone.message}</p>
