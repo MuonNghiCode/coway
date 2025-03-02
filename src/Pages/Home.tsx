@@ -142,15 +142,15 @@ const Home: React.FC = () => {
 
   return (
     <div
-      className={`min-h-screen bg-[#00052c] px-5 sm:px-10 pt-5 sm:pt-10 overflow-hidden 
+      className={`min-h-screen bg-[#00052c] px-5 sm:px-10 pt-20 sm:pt-32 md:pt-40 lg:pt-48 xl:pt-56 overflow-hidden 
         transition-opacity duration-1000 ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       id="Home"
     >
-      <div className="container mx-auto min-h-screen flex flex-col-reverse lg:flex-row items-center justify-between">
+      <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center justify-center lg:justify-between gap-10 sm:gap-16 md:gap-20 lg:gap-24">
         {/* ✅ Left Column - Nội dung */}
-        <div className="w-full lg:w-1/2 text-center lg:text-left space-y-6 order-2 lg:order-1 mt-10 sm:mt-16 md:mt-20 lg:mt-0">
+        <div className="w-full lg:w-1/2 text-center lg:text-left space-y-6 order-2 lg:order-1">
           <MainTitle />
 
           {/* 🖋️ Typing Effect */}
@@ -164,11 +164,13 @@ const Home: React.FC = () => {
           {/* 📌 Description */}
           <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed">
             Với sự kiện lần này chúng mình đồng hành cùng thương hiệu COWAY -
-            Máy lọc nước, máy lọc không khí số 1 Hàn Quốc
+            Máy lọc nước, máy lọc không khí số 1 Hàn Quốc.
           </p>
           <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed">
             Mỗi người đều xứng đáng tận hưởng một không gian sống trong lành và
-            tiện nghi! COWAY sử dụng công nghệ bộ lọc tiên tiến...
+            tiện nghi! COWAY sử dụng công nghệ bộ lọc tiên tiến, cam kết với
+            tiêu chí “Hơn cả một sản phẩm, đó là sự chăm sóc dành riêng cho
+            bạn!"
           </p>
           <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed">
             Chỉ từ{" "}
@@ -176,10 +178,10 @@ const Home: React.FC = () => {
               360.000 đồng/tháng
             </span>
             , bạn đã có thể sở hữu ngay một giải pháp chăm sóc sức khỏe toàn
-            diện.
+            diện cho không gian sống.
           </p>
           <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed">
-            Hãy cùng Vicky khám phá và nhận ngay những ưu đãi độc quyền
+            Hãy cùng Vicky khám phá và nhận ngay những ưu đãi độc quyền.
             <span className="inline-flex items-center ml-2 text-[#00A7E1] animate-bounce">
               <ArrowDown className="w-4 h-4" />
             </span>
@@ -188,7 +190,7 @@ const Home: React.FC = () => {
 
         {/* 🎬 Right Column - Lottie Animation */}
         <div
-          className="w-full lg:w-1/2 flex justify-center items-center order-1 lg:order-2"
+          className="w-full lg:w-1/2 flex justify-center items-center order-1 lg:order-2 mt-10 sm:mt-16 md:mt-0"
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
         >

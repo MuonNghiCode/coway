@@ -1,17 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { Share2, User, Mail, Send, Phone } from "lucide-react";
 import Swal from "sweetalert2";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  productType: string;
+  contactReason: string;
+}
+
 const ContactPage: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    productType: "", // Add productType field
-    contactReason: "", // Add contactReason field
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FormData>();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
@@ -20,30 +28,7 @@ const ContactPage: React.FC = () => {
     });
   }, []);
 
-  interface FormData {
-    name: string;
-    email: string;
-    phone: string;
-    productType: string; // Add productType field
-    contactReason: string; // Add contactReason field
-  }
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ): void => {
-    const { name, value } = e.target;
-    setFormData((prev: FormData) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  interface HandleSubmitEvent extends React.FormEvent<HTMLFormElement> {
-    target: HTMLFormElement;
-  }
-
-  const handleSubmit = async (e: HandleSubmitEvent): Promise<void> => {
-    e.preventDefault();
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
     setIsSubmitting(true);
 
     Swal.fire({
@@ -56,11 +41,14 @@ const ContactPage: React.FC = () => {
     });
 
     try {
-      // Get form data
-      const form = e.target;
-
       // Submit form
-      await form.submit();
+      await fetch("https://formsubmit.co/minhquanpm1610@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
       // Show success message
       Swal.fire({
@@ -73,13 +61,7 @@ const ContactPage: React.FC = () => {
       });
 
       // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        productType: "", // Reset productType field
-        contactReason: "", // Reset contactReason field
-      });
+      reset();
     } catch (error) {
       Swal.fire({
         title: "Lỗi!",
@@ -146,12 +128,7 @@ const ContactPage: React.FC = () => {
                 <Share2 className="w-10 h-10 text-[#6366f1] opacity-50" />
               </div>
 
-              <form
-                action="https://formsubmit.co/minhquanpm1610@gmail.com"
-                method="POST"
-                onSubmit={handleSubmit}
-                className="space-y-6"
-              >
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 {/* FormSubmit Configuration */}
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_captcha" value="false" />
@@ -164,14 +141,24 @@ const ContactPage: React.FC = () => {
                   <User className="absolute left-4 top-4 w-5 h-5 text-gray-400 group-focus-within:text-[#6366f1] transition-colors" />
                   <input
                     type="text"
-                    name="name"
+                    {...register("name", {
+                      required: "Tên của bạn là bắt buộc",
+                      pattern: {
+                        value: /^[a-zA-Z\s]*$/,
+                        message: "Tên không hợp lệ",
+                      },
+                      minLength: {
+                        value: 6,
+                        message: "Tên phải có ít nhất 6 ký tự",
+                      },
+                    })}
                     placeholder="Tên của bạn"
-                    value={formData.name}
-                    onChange={handleChange}
                     disabled={isSubmitting}
                     className="w-full p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-[#6366f1]/30 transition-all duration-300 hover:border-[#6366f1]/30 disabled:opacity-50"
-                    required
                   />
+                  {errors.name && (
+                    <p className="text-red-500">{errors.name.message}</p>
+                  )}
                 </div>
                 <div
                   data-aos="fade-up"
@@ -181,14 +168,21 @@ const ContactPage: React.FC = () => {
                   <Mail className="absolute left-4 top-4 w-5 h-5 text-gray-400 group-focus-within:text-[#6366f1] transition-colors" />
                   <input
                     type="email"
-                    name="email"
+                    {...register("email", {
+                      required: "Email của bạn là bắt buộc",
+                      pattern: {
+                        value:
+                          /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                        message: "Email không hợp lệ",
+                      },
+                    })}
                     placeholder="Email của bạn"
-                    value={formData.email}
-                    onChange={handleChange}
                     disabled={isSubmitting}
                     className="w-full p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-[#6366f1]/30 transition-all duration-300 hover:border-[#6366f1]/30 disabled:opacity-50"
-                    required
                   />
+                  {errors.email && (
+                    <p className="text-red-500">{errors.email.message}</p>
+                  )}
                 </div>
                 <div
                   data-aos="fade-up"
@@ -198,14 +192,20 @@ const ContactPage: React.FC = () => {
                   <Phone className="absolute left-4 top-4 w-5 h-5 text-gray-400 group-focus-within:text-[#6366f1] transition-colors" />
                   <input
                     type="tel"
-                    name="phone"
+                    {...register("phone", {
+                      required: "Số điện thoại của bạn là bắt buộc",
+                      pattern: {
+                        value: /^[0-9]+$/,
+                        message: "Số điện thoại không hợp lệ",
+                      },
+                    })}
                     placeholder="Số điện thoại của bạn"
-                    value={formData.phone}
-                    onChange={handleChange}
                     disabled={isSubmitting}
                     className="w-full p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-[#6366f1]/30 transition-all duration-300 hover:border-[#6366f1]/30 disabled:opacity-50"
-                    required
                   />
+                  {errors.phone && (
+                    <p className="text-red-500">{errors.phone.message}</p>
+                  )}
                 </div>
                 <div
                   data-aos="fade-up"
@@ -217,17 +217,16 @@ const ContactPage: React.FC = () => {
                     <label className="flex items-center">
                       <input
                         type="radio"
-                        name="productType"
+                        {...register("productType", {
+                          required: "Loại sản phẩm là bắt buộc",
+                        })}
                         value="Máy lọc không khí"
-                        checked={formData.productType === "Máy lọc không khí"}
-                        onChange={handleChange}
                         disabled={isSubmitting}
                         className="hidden"
-                        required
                       />
                       <div
                         className={`p-4 border rounded-xl cursor-pointer ${
-                          formData.productType === "Máy lọc không khí"
+                          errors.productType?.message === "Máy lọc không khí"
                             ? "border-[#00A7E1] bg-[#00A7E1]/10"
                             : "border-gray-400"
                         }`}
@@ -238,17 +237,16 @@ const ContactPage: React.FC = () => {
                     <label className="flex items-center">
                       <input
                         type="radio"
-                        name="productType"
+                        {...register("productType", {
+                          required: "Loại sản phẩm là bắt buộc",
+                        })}
                         value="Máy lọc nước"
-                        checked={formData.productType === "Máy lọc nước"}
-                        onChange={handleChange}
                         disabled={isSubmitting}
                         className="hidden"
-                        required
                       />
                       <div
                         className={`p-4 border rounded-xl cursor-pointer ${
-                          formData.productType === "Máy lọc nước"
+                          errors.productType?.message === "Máy lọc nước"
                             ? "border-[#00A7E1] bg-[#00A7E1]/10"
                             : "border-gray-400"
                         }`}
@@ -257,6 +255,9 @@ const ContactPage: React.FC = () => {
                       </div>
                     </label>
                   </div>
+                  {errors.productType && (
+                    <p className="text-red-500">{errors.productType.message}</p>
+                  )}
                 </div>
                 <div
                   data-aos="fade-up"
@@ -268,17 +269,16 @@ const ContactPage: React.FC = () => {
                     <label className="flex items-center">
                       <input
                         type="radio"
-                        name="contactReason"
+                        {...register("contactReason", {
+                          required: "Lựa chọn của bạn là bắt buộc",
+                        })}
                         value="Thuê"
-                        checked={formData.contactReason === "Thuê"}
-                        onChange={handleChange}
                         disabled={isSubmitting}
                         className="hidden"
-                        required
                       />
                       <div
                         className={`p-4 border rounded-xl cursor-pointer ${
-                          formData.contactReason === "Thuê"
+                          errors.contactReason?.message === "Thuê"
                             ? "border-[#00A7E1] bg-[#00A7E1]/10"
                             : "border-gray-400"
                         }`}
@@ -289,17 +289,16 @@ const ContactPage: React.FC = () => {
                     <label className="flex items-center">
                       <input
                         type="radio"
-                        name="contactReason"
+                        {...register("contactReason", {
+                          required: "Lựa chọn của bạn là bắt buộc",
+                        })}
                         value="Mua"
-                        checked={formData.contactReason === "Mua"}
-                        onChange={handleChange}
                         disabled={isSubmitting}
                         className="hidden"
-                        required
                       />
                       <div
                         className={`p-4 border rounded-xl cursor-pointer ${
-                          formData.contactReason === "Mua"
+                          errors.contactReason?.message === "Mua"
                             ? "border-[#00A7E1] bg-[#00A7E1]/10"
                             : "border-gray-400"
                         }`}
@@ -308,6 +307,11 @@ const ContactPage: React.FC = () => {
                       </div>
                     </label>
                   </div>
+                  {errors.contactReason && (
+                    <p className="text-red-500">
+                      {errors.contactReason.message}
+                    </p>
+                  )}
                 </div>
                 <button
                   data-aos="fade-up"
