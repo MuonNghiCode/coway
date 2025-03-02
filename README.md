@@ -55,12 +55,14 @@ Chương trình giúp chúng tôi tiếp cận và trải nghiệm thực tế q
 
 ## 🎨 ASCII ART  
 ```ascii
-  _____  ____  _      _    _
- / ____|/ __ \| |    | |  | |
-| |    | |  | | |    | |  | |
-| |    | |  | | |    | |  | |
-| |____| |__| | |____| |__| |
- \_____|\____/|______|\____/
+
+____   ____.____________  ____  __._____.___.
+\   \ /   /|   \_   ___ \|    |/ _|\__  |   |
+ \   Y   / |   /    \  \/|      <   /   |   |
+  \     /  |   \     \___|    |  \  \____   |
+   \___/   |___|\______  /____|__ \ / ______|
+                       \/        \/ \/       
+
 ```
 
 ---
@@ -73,10 +75,7 @@ Chương trình giúp chúng tôi tiếp cận và trải nghiệm thực tế q
 
 ---
 
-## 🎖️ Badges  
-![GitHub Stars](https://img.shields.io/github/stars/coway-team?style=social)  
-![Forks](https://img.shields.io/github/forks/coway-team?style=social)  
-![Contributors](https://img.shields.io/github/contributors/coway-team)  
+## 🎖️ Badges   
 ![Coway Event](https://img.shields.io/badge/Coway-Professional%20Selling-blue)  
 ![FPT University](https://img.shields.io/badge/FPT%20University-Students-orange)  
 
