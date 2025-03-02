@@ -29,7 +29,7 @@ const ContactPage: React.FC = () => {
     });
   }, []);
 
-  const onSubmit = () => {
+  const onSubmit = (data: FormData) => {
     setIsSubmitting(true);
 
     Swal.fire({
