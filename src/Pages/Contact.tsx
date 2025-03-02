@@ -146,9 +146,7 @@ const ContactPage: React.FC = () => {
                 onSubmit={handleSubmit((data, e) => onSubmit(data, e))}
                 className="space-y-6"
               >
-                {/* FormSubmit Configuration */}
-                <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_captcha" value="false" />
+                {/* Remove FormSubmit Configuration */}
 
                 <div
                   data-aos="fade-up"
