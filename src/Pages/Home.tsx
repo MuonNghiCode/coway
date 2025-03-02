@@ -142,7 +142,7 @@ const Home: React.FC = () => {
 
   return (
     <div
-      className={`min-h-screen bg-[#00052c] px-5 sm:px-10 pt-20 sm:pt-32 md:pt-40 lg:pt-48 xl:pt-56 overflow-hidden 
+      className={`min-h-screen bg-[#00052c] px-5 sm:px-10 pt-20 sm:pt-32 md:pt-40 lg:pt-30 xl:pt-56 overflow-hidden 
         transition-opacity duration-1000 ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
