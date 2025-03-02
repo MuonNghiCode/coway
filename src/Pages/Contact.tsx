@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import React, { useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { Share2, User, Mail, Send, Phone } from "lucide-react";
 import Swal from "sweetalert2";
 import AOS from "aos";
@@ -19,8 +19,9 @@ const ContactPage: React.FC = () => {
     handleSubmit,
     formState: { errors },
     reset,
+    watch,
   } = useForm<FormData>();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   useEffect(() => {
     AOS.init({
@@ -28,7 +29,7 @@ const ContactPage: React.FC = () => {
     });
   }, []);
 
-  const onSubmit: SubmitHandler<FormData> = async (data) => {
+  const onSubmit = (data: FormData) => {
     setIsSubmitting(true);
 
     Swal.fire({
@@ -40,38 +41,20 @@ const ContactPage: React.FC = () => {
       },
     });
 
-    try {
-      // Submit form
-      await fetch("https://formsubmit.co/minhquanpm1610@gmail.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+    const form = document.getElementById("contactForm") as HTMLFormElement;
+    form.submit();
 
-      // Show success message
-      Swal.fire({
-        title: "Thành công!",
-        text: "Tin nhắn của bạn đã được gửi thành công!",
-        icon: "success",
-        confirmButtonColor: "#6366f1",
-        timer: 2000,
-        timerProgressBar: true,
-      });
+    Swal.fire({
+      title: "Thành công!",
+      text: "Tin nhắn của bạn đã được gửi thành công!",
+      icon: "success",
+      confirmButtonColor: "#6366f1",
+      timer: 2000,
+      timerProgressBar: true,
+    });
 
-      // Reset form
-      reset();
-    } catch (error) {
-      Swal.fire({
-        title: "Lỗi!",
-        text: "Đã xảy ra lỗi. Vui lòng thử lại sau.",
-        icon: "error",
-        confirmButtonColor: "#6366f1",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    reset();
+    setIsSubmitting(false);
   };
 
   return (
@@ -128,7 +111,13 @@ const ContactPage: React.FC = () => {
                 <Share2 className="w-10 h-10 text-[#6366f1] opacity-50" />
               </div>
 
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <form
+                id="contactForm"
+                action="https://formsubmit.co/minhquanpm1610@gmail.com"
+                method="POST"
+                onSubmit={handleSubmit(onSubmit)}
+                className="space-y-6"
+              >
                 {/* FormSubmit Configuration */}
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_captcha" value="false" />
@@ -143,10 +132,6 @@ const ContactPage: React.FC = () => {
                     type="text"
                     {...register("name", {
                       required: "Tên của bạn là bắt buộc",
-                      pattern: {
-                        value: /^[a-zA-Z\s]*$/,
-                        message: "Tên không hợp lệ",
-                      },
                       minLength: {
                         value: 6,
                         message: "Tên phải có ít nhất 6 ký tự",
@@ -226,7 +211,7 @@ const ContactPage: React.FC = () => {
                       />
                       <div
                         className={`p-4 border rounded-xl cursor-pointer ${
-                          errors.productType?.message === "Máy lọc không khí"
+                          watch("productType") === "Máy lọc không khí"
                             ? "border-[#00A7E1] bg-[#00A7E1]/10"
                             : "border-gray-400"
                         }`}
@@ -246,7 +231,7 @@ const ContactPage: React.FC = () => {
                       />
                       <div
                         className={`p-4 border rounded-xl cursor-pointer ${
-                          errors.productType?.message === "Máy lọc nước"
+                          watch("productType") === "Máy lọc nước"
                             ? "border-[#00A7E1] bg-[#00A7E1]/10"
                             : "border-gray-400"
                         }`}
@@ -278,7 +263,7 @@ const ContactPage: React.FC = () => {
                       />
                       <div
                         className={`p-4 border rounded-xl cursor-pointer ${
-                          errors.contactReason?.message === "Thuê"
+                          watch("contactReason") === "Thuê"
                             ? "border-[#00A7E1] bg-[#00A7E1]/10"
                             : "border-gray-400"
                         }`}
@@ -298,7 +283,7 @@ const ContactPage: React.FC = () => {
                       />
                       <div
                         className={`p-4 border rounded-xl cursor-pointer ${
-                          errors.contactReason?.message === "Mua"
+                          watch("contactReason") === "Mua"
                             ? "border-[#00A7E1] bg-[#00A7E1]/10"
                             : "border-gray-400"
                         }`}
