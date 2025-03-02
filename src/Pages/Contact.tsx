@@ -4,6 +4,7 @@ import { Share2, User, Mail, Send, Phone } from "lucide-react";
 import Swal from "sweetalert2";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import emailjs from "emailjs-com";
 
 interface FormData {
   name: string;
@@ -65,24 +66,40 @@ const ContactPage: React.FC = () => {
     }
 
     // Nếu dữ liệu hợp lệ, submit form
-    const form = document.getElementById("contactForm") as HTMLFormElement;
+    try {
+      await emailjs.send(
+        "service_ffhwefp", // Replace with your EmailJS service ID
+        "template_v2zb45j", // Replace with your EmailJS template ID
+        {
+          from_name: data.name,
+          from_email: data.email,
+          phone: data.phone,
+          product_type: data.productType,
+          contact_reason: data.contactReason,
+        },
+        "ifN-4I7TluJxh6opt" // Replace with your EmailJS user ID
+      );
 
-    // Log the form data again before submitting
-    console.log("Submitting form with data:", data);
+      Swal.fire({
+        title: "Thành công!",
+        text: "Tin nhắn của bạn đã được gửi thành công!",
+        icon: "success",
+        confirmButtonColor: "#6366f1",
+        timer: 2000,
+        timerProgressBar: true,
+      });
 
-    form.submit();
-
-    Swal.fire({
-      title: "Thành công!",
-      text: "Tin nhắn của bạn đã được gửi thành công!",
-      icon: "success",
-      confirmButtonColor: "#6366f1",
-      timer: 2000,
-      timerProgressBar: true,
-    });
-
-    reset();
-    setIsSubmitting(false);
+      reset();
+    } catch (error) {
+      Swal.fire({
+        title: "Lỗi!",
+        text: "Đã xảy ra lỗi khi gửi tin nhắn của bạn. Vui lòng thử lại sau.",
+        icon: "error",
+        confirmButtonColor: "#6366f1",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -141,13 +158,9 @@ const ContactPage: React.FC = () => {
 
               <form
                 id="contactForm"
-                action="https://formspree.io/f/mzzdnjza"
-                method="POST"
                 onSubmit={handleSubmit((data, e) => onSubmit(data, e))}
                 className="space-y-6"
               >
-                {/* Remove FormSubmit Configuration */}
-
                 <div
                   data-aos="fade-up"
                   data-aos-delay="100"
