@@ -66,6 +66,10 @@ const ContactPage: React.FC = () => {
 
     // Nếu dữ liệu hợp lệ, submit form
     const form = document.getElementById("contactForm") as HTMLFormElement;
+
+    // Log the form data again before submitting
+    console.log("Submitting form with data:", data);
+
     form.submit();
 
     Swal.fire({
@@ -137,7 +141,7 @@ const ContactPage: React.FC = () => {
 
               <form
                 id="contactForm"
-                action="https://formsubmit.co/ngocphuong070404@gmail.com"
+                action="https://formspree.io/f/mzzdnjza"
                 method="POST"
                 onSubmit={handleSubmit((data, e) => onSubmit(data, e))}
                 className="space-y-6"
